@@ -48,8 +48,7 @@ public enum Result
         CODE_MAP = new HashMap<>();
 
         for (Result r : Result.values())
-            if (CODE_MAP.put(r.resultCode, r.message) != null)
-                throw new IllegalArgumentException("Result Codes must be Unique!");
+            CODE_MAP.put(r.resultCode, r.message);
     }
 
     private final Integer resultCode;
