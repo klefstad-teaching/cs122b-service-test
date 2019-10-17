@@ -11,8 +11,8 @@
 ./gradlew     test --tests *TestClassName
 
 Example for HW1:
- gradlew test --tests BasicTest
+ gradlew test --tests *BasicTest
 ~~~
 
 - This will run all tests named `TestClassName` and will output a html report and a xml report in a newly create report folder
-- Right now the folder needs to be deleted to run the test again, There is a gradle option that will be added after some testing that will automatically delete the folder before the test runs.
+- The report folder is now Deleted before the test runs ensuring the tests run.
