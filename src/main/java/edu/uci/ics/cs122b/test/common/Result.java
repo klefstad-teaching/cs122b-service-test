@@ -22,6 +22,8 @@ public enum Result
     DATA_CONTAINS_INVALID_INTEGERS      (22, "Data contains invalid integers"),
 
     /*HW2 Result Codes*/
+    PLEVEL_OUT_OF_RANGE                 (-14, "Privilege level out of valid range", Status.BAD_REQUEST),
+    TOKEN_INVALID_LENGTH                (-13, "Token has invalid length", Status.BAD_REQUEST),
     PASSWORD_INVALID_LENGTH             (-12, "Password has invalid length", Status.BAD_REQUEST),
     EMAIL_ADDRESS_INVALID_FORMAT        (-11, "Email address has invalid format", Status.BAD_REQUEST),
     EMAIL_ADDRESS_INVALID_LENGTH        (-10, "Email address has invalid length", Status.BAD_REQUEST),
@@ -40,6 +42,7 @@ public enum Result
     SESSION_NOT_FOUND                     (134, "Session not found"),
     SUFFICIENT_PRIVILEGE                  (140, "User has sufficient privilege level"),
     INSUFFICIENT_PRIVILEGE                (141, "User has insufficient privilege level");
+
 
     private static final Map<Integer, String> CODE_MAP;
 
