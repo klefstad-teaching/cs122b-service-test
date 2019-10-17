@@ -10,8 +10,10 @@
 ./gradlew.bat test --tests *TestClassName
 ./gradlew     test --tests *TestClassName
 
-Example for HW1:
+HW1:
  gradlew test --tests *BasicTest
+HW2
+ gradlew test --tests *IdmTest
 ~~~
 
 - This will run all tests named `TestClassName` and will output a html report and a xml report in a newly create report folder
