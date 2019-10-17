@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import edu.uci.ics.cs122b.test.base.ResponseModel;
 
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 
 public class ServiceResponse <T extends ResponseModel>
 {
@@ -63,6 +64,12 @@ public class ServiceResponse <T extends ResponseModel>
     static <T extends ResponseModel> ServiceResponse<T> buildResponse(Response response, Class<T> responseClass)
     {
         T responseModel = response.readEntity(responseClass);
+
+        try {
+            System.out.println("\nServer Response: " + MAPPER.writeValueAsString(responseModel));
+        } catch (IOException e) {
+            System.out.println("\nCould map Server Response" + e.getMessage());
+        }
 
         return new ServiceResponse<>(response.getStatus(), responseModel);
     }
