@@ -17,5 +17,4 @@ HW2
 ~~~
 
 - This will run all tests named `TestClassName` and will output a html report and a xml report in a newly create report folder
-- ~The report folder is now Deleted before the test runs ensuring the tests run.~ 
 - You will still need to delete the folder before every test, there is a commented out script in the gradlew.build folder that you can use to delete the folder automaticly
