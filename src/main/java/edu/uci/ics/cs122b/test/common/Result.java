@@ -45,7 +45,22 @@ public enum Result
 	
 	/*HW3 Result Codes */
 	MOVIES_FOUND								(210, "Found movie(s) with search parameters."),
-	MOVIES_NOT_FOUND							(211, "No movies found with search parameters.");
+	MOVIES_NOT_FOUND							(211, "No movies found with search parameters."),
+	PEOPLE_FOUND                                (212, "Found people with search parameters."),
+    PEOPLE_NOT_FOUND                            (213, "No people found with search parameters."),
+    MOVIE_ADDED                                 (214, "Movie successfully added."),
+    MOVIE_NOT_ADDED                             (215, "Could not add movie."),
+    MOVIE_ALREADY_EXISTS                        (216, "Movie already exists."),
+    MOVIE_UPDATED                               (217, "Movie successfully updated."),
+    MOVIE_NOT_UPDATED                           (218, "Could not update movie."),
+    PERSON_DOES_NOT_EXIST                       (223, "Person does not exist."),
+    PERSON_NOT_UPDATED                          (224, "Could not update person."),
+    PERSON_UPDATED                              (225, "Person successfully updated."),
+    PERSON_ALREADY_EXISTS                       (226, "Person already exists."),
+    PERSON_NOT_ADDED                            (227, "Could not add person."),
+    PERSON_ADDED                                (228, "Person successfully added."),
+    POPULARITY_UPDATED                          (260, "Popularity successfully updated."),
+    POPULAIRTY_NOT_UPDATED                      (261, "Could not update popularity.");
 
 
     private static final Map<Integer, String> CODE_MAP;
