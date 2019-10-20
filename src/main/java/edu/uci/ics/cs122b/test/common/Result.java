@@ -41,7 +41,11 @@ public enum Result
     SESSION_REVOKED                             (133, "Session is revoked"),
     SESSION_NOT_FOUND                           (134, "Session not found"),
     SUFFICIENT_PRIVILEGE                        (140, "User has sufficient privilege level"),
-    INSUFFICIENT_PRIVILEGE                      (141, "User has insufficient privilege level");
+    INSUFFICIENT_PRIVILEGE                      (141, "User has insufficient privilege level"),
+	
+	/*HW3 Result Codes */
+	MOVIES_FOUND								(210, "Found movie(s) with search parameters."),
+	MOVIES_NOT_FOUND							(211, "No movies found with search parameters.");
 
 
     private static final Map<Integer, String> CODE_MAP;
