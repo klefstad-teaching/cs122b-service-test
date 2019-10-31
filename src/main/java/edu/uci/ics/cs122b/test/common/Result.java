@@ -42,11 +42,11 @@ public enum Result
     SESSION_NOT_FOUND                           (134, "Session not found"),
     SUFFICIENT_PRIVILEGE                        (140, "User has sufficient privilege level"),
     INSUFFICIENT_PRIVILEGE                      (141, "User has insufficient privilege level"),
-	
-	/*HW3 Result Codes */
-	MOVIES_FOUND								(210, "Found movie(s) with search parameters."),
-	MOVIES_NOT_FOUND							(211, "No movies found with search parameters."),
-	PEOPLE_FOUND                                (212, "Found people with search parameters."),
+
+    /*HW3 Result Codes */
+    MOVIES_FOUND								(210, "Found movie(s) with search parameters."),
+    MOVIES_NOT_FOUND							(211, "No movies found with search parameters."),
+    PEOPLE_FOUND                                (212, "Found people with search parameters."),
     PEOPLE_NOT_FOUND                            (213, "No people found with search parameters."),
     MOVIE_ADDED                                 (214, "Movie successfully added."),
     MOVIE_NOT_ADDED                             (215, "Could not add movie."),
@@ -60,7 +60,27 @@ public enum Result
     PERSON_NOT_ADDED                            (227, "Could not add person."),
     PERSON_ADDED                                (228, "Person successfully added."),
     POPULARITY_UPDATED                          (260, "Popularity successfully updated."),
-    POPULAIRTY_NOT_UPDATED                      (261, "Could not update popularity.");
+    POPULAIRTY_NOT_UPDATED                      (261, "Could not update popularity."),
+
+    /* HW 4 Result Codes */
+    QUANTITY_INVALID                            (33, "Quantity has invalid value."),
+    ITEM_INSERTION_DUPLICATE                    (311, "Duplicate insertion."),
+    ITEM_DNE                                    (312, "Shopping cart item does not exist."),
+    ORDER_PLACE_FAIL                            (342, "Order creation failed."),
+    ITEM_INSERTION_SUCCESS                      (3100, "Shopping cart item inserted successfully."),
+    ITEM_UPDATE_SUCCESS                         (3110, "Shopping cart item updated successfully."),
+    ITEM_DELETE_SUCCESS                         (3120, "Shopping cart item deleted successfully."),
+    CART_RETRIEVE_SUCCESS                       (3130, "Shopping cart retrieved successfully."),
+    CART_CLEAR_SUCCESS                          (3140, "Shopping cart cleared successfully."),
+    ORDER_PLACE_SUCCESS                         (3400, "Order placed successfully."),
+    ORDER_RETRIEVE_SUCCESS                      (3410, "Orders retrieved successfully."),
+    ORDER_COMPLETE_SUCCESS                      (3420, "Order is completed successfully."),
+    ORDER_COMPLETE_FAIL                         (3422, "Order can not be completed.");
+
+
+
+
+
 
 
     private static final Map<Integer, String> CODE_MAP;
