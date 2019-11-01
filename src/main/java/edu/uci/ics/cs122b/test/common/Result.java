@@ -72,10 +72,13 @@ public enum Result
     ITEM_DELETE_SUCCESS                         (3120, "Shopping cart item deleted successfully."),
     CART_RETRIEVE_SUCCESS                       (3130, "Shopping cart retrieved successfully."),
     CART_CLEAR_SUCCESS                          (3140, "Shopping cart cleared successfully."),
+    CART_OPERATION_FAIL                         (3150, "Shopping cart operation failed."),
     ORDER_PLACE_SUCCESS                         (3400, "Order placed successfully."),
     ORDER_RETRIEVE_SUCCESS                      (3410, "Orders retrieved successfully."),
     ORDER_COMPLETE_SUCCESS                      (3420, "Order is completed successfully."),
+    TOKEN_NOT_FOUND                             (3421, "Token not found."),
     ORDER_COMPLETE_FAIL                         (3422, "Order can not be completed.");
+    
 
 
 
