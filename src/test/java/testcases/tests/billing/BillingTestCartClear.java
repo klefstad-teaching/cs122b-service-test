@@ -24,7 +24,7 @@ public class BillingTestCartClear {
         headers.putSingle("email", UserAccounts.validEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
 
-        String email = "validClear@uci.edu";
+        String email = UserAccounts.validEmail;
         String movie_id = "tt4154796";
         Integer quantity = 1;
 
@@ -60,13 +60,12 @@ public class BillingTestCartClear {
         headers.putSingle("email", UserAccounts.validEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
 
-        String email = "invalidClear@uci.edu";
+        String email = UserAccounts.validEmail;
 
         //calling clear
         Result expectedResultClear = Result.ITEM_DNE;
         ServiceResponse<CartClearResponseModel> responseClear = BillingSocket.postCartClear(headers, email);
         assertEquals(expectedResultClear.getStatus(), responseClear.getStatus());
     }
-
 
 }

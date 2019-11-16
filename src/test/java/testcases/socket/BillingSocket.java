@@ -6,14 +6,8 @@ import edu.uci.ics.cs122b.test.util.ServiceSocket;
 import edu.uci.ics.cs122b.test.util.ServiceSocketFactory;
 import testcases.model.hw3.request.ThumbnailRequestModel;
 import testcases.model.hw3.response.ThumbnailResponseModel;
-import testcases.model.hw4.request.CartClearRequestModel;
-import testcases.model.hw4.request.CartInsertRequestModel;
-import testcases.model.hw4.request.CartRetrieveRequestModel;
-import testcases.model.hw4.response.CartClearResponseModel;
-import testcases.model.hw4.response.CartInsertResponseModel;
-import testcases.model.hw4.response.CartRetrieveResponseModel;
-import testcases.model.hw4.request.CartUpdateRequestModel;
-import testcases.model.hw4.response.CartUpdateResponseModel;
+import testcases.model.hw4.request.*;
+import testcases.model.hw4.response.*;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 import java.net.URI;

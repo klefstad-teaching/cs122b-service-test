@@ -130,7 +130,7 @@ public class BillingTestCartUpdate {
     }
 
     @After
-    public static void clearCartAfterAll()
+    public void clearCartAfterAll()
     {
         clearCart(UserAccounts.validEmail, UserAccounts.session_id);
         //clear cart

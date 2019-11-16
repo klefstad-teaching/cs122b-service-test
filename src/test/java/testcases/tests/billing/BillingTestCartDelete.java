@@ -29,7 +29,7 @@ public class BillingTestCartDelete {
         headers.putSingle("email", UserAccounts.validEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
 
-        String email = "validDelete@uci.edu";
+        String email = UserAccounts.validEmail;
         String movie_id = "tt4154796";
         Integer quantity = 1;
 
@@ -65,7 +65,7 @@ public class BillingTestCartDelete {
         headers.putSingle("email", UserAccounts.validEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
 
-        String email = "invalidDelete@uci.edu";
+        String email = UserAccounts.validEmail;
         String movie_id = "tt4154796";
 
         //calling delete

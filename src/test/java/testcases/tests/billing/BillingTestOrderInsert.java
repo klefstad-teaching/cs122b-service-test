@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNull;
 
 public class BillingTestOrderInsert {
     /*
-    Note: These will have to insert and retrieve movies do to logic dependencies.
+    Note: These will have to insert and retrieve movies due to logic dependencies.
      */
     public void clearCart(String email, String session_id)
     {
