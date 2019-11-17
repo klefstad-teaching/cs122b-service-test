@@ -4,13 +4,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import edu.uci.ics.cs122b.test.base.ResponseModel;
 
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
 public class ServiceResponse <T extends ResponseModel>
 {
     private final static ObjectMapper MAPPER;
+
     private Integer status;
+    private MultivaluedMap<String, Object> headers;
     private T entity;
 
     static
@@ -21,23 +24,28 @@ public class ServiceResponse <T extends ResponseModel>
     /**
      * Creates an instance of ServiceResponse
      *
-     * @param status the status code of the Response
-     * @param entity the entity in object form from the Response
+     * @param status  the status code of the Response
+     * @param headers the headers from the Response
+     * @param entity  the entity in object form from the Response
      */
-    private ServiceResponse(Integer status, T entity)
+    private ServiceResponse(Integer status, MultivaluedMap<String, Object> headers, T entity)
     {
         this.status = status;
+        this.headers = headers;
         this.entity = entity;
     }
+
 
     /**
      * Creates an instance of ServiceResponse
      *
-     * @param status the status code of the Response
+     * @param status  the status code of the Response
+     * @param headers the headers from the Response
      */
-    private ServiceResponse(Integer status)
+    private ServiceResponse(Integer status, MultivaluedMap<String, Object> headers)
     {
         this.status = status;
+        this.headers = headers;
         this.entity = null;
     }
 
@@ -50,7 +58,7 @@ public class ServiceResponse <T extends ResponseModel>
     static ServiceResponse buildResponse(Response response)
     {
 
-        return new ServiceResponse<>(response.getStatus());
+        return new ServiceResponse<>(response.getStatus(), response.getHeaders());
     }
 
     /**
@@ -71,7 +79,7 @@ public class ServiceResponse <T extends ResponseModel>
             System.out.println("\nCould map Server Response" + e.getMessage());
         }
 
-        return new ServiceResponse<>(response.getStatus(), responseModel);
+        return new ServiceResponse<>(response.getStatus(), response.getHeaders(), responseModel);
     }
 
     /**
@@ -90,5 +98,15 @@ public class ServiceResponse <T extends ResponseModel>
     public T getEntity()
     {
         return entity;
+    }
+
+
+    /**
+     *
+     * @return current headers
+     */
+    public MultivaluedMap<String, Object> getHeaders()
+    {
+        return headers;
     }
 }
