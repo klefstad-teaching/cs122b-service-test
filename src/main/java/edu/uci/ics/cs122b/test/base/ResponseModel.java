@@ -8,7 +8,7 @@ import java.util.Objects;
 public abstract class ResponseModel
 {
     @JsonProperty("resultCode")
-    private    int resultCode;
+    private int resultCode;
     @JsonProperty("message")
     private String message;
 
