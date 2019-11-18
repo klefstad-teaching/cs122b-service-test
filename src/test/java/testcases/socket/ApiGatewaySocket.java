@@ -11,7 +11,6 @@ import testcases.model.hw3.request.GetMovieRequestModel;
 import testcases.model.hw3.request.GetPersonRequestModel;
 import testcases.model.hw3.request.ThumbnailRequestModel;
 import testcases.model.hw3.response.*;
-import testcases.model.hw5.response.ApiResponseModel;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 import java.net.URI;
@@ -50,30 +49,30 @@ public class ApiGatewaySocket {
         SOCKET_FACTORY = ServiceSocketFactory.createFactory(FULL_URI);
     }
 
-    public static ServiceResponse<LoginResponseModel> apiGetReport(MultivaluedHashMap<String, Object> headers)
+    public static <T extends ResponseModel> ServiceResponse<T> apiGetReport(Class<T> responseClass, MultivaluedHashMap<String, Object> headers)
     {
         ServiceSocket serviceSocket = SOCKET_FACTORY.createSocket(API_GATEWAY_REPORT_EP);
         serviceSocket = serviceSocket.headers(headers);
-        return serviceSocket.get(LoginResponseModel.class);
+        return serviceSocket.get(responseClass);
     }
 
 
-    public static ServiceResponse<ApiResponseModel> apiPostIdmRegister(String email, char[] password)
+    public static ServiceResponse<ResponseModel> apiPostIdmLogin(String email, char[] password)
     {
         LoginRequestModel requestModel = new LoginRequestModel(email, password);
 
         ServiceSocket serviceSocket = SOCKET_FACTORY.createSocket(IDM_LOGIN_EP);
 
-        return serviceSocket.post(ApiResponseModel.class,requestModel);
+        return serviceSocket.post(ResponseModel.class,requestModel);
     }
 
-    public static ServiceResponse<ApiResponseModel> apiGetMovieSearch(MultivaluedHashMap<String, Object> headers, MultivaluedHashMap<String, Object> query)
+    public static ServiceResponse<ResponseModel> apiGetMovieSearch(MultivaluedHashMap<String, Object> headers, MultivaluedHashMap<String, Object> query)
     {
         ServiceSocket serviceSocket = SOCKET_FACTORY.createSocket(MOVIES_SEARCH_EP);
         serviceSocket = serviceSocket.headers(headers);
         serviceSocket = serviceSocket.queries(query);
 
-        return serviceSocket.get(ApiResponseModel.class);
+        return serviceSocket.get(ResponseModel.class);
 
     }
 //
