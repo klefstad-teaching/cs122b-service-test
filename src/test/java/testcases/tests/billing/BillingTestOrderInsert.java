@@ -131,7 +131,7 @@ public class BillingTestOrderInsert {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email);
         headers.putSingle("session_id", UserAccounts.session_id);
-        ServiceResponse<CartInsertResponseModel> response = BillingSocket.postCartInsert(headers, email, "tt01337NoExist", quantity);
+        ServiceResponse<CartInsertResponseModel> response = BillingSocket.postCartInsert(headers, email, "tt0lee7", quantity);
         CartInsertResponseModel expectedModel = new CartInsertResponseModel(expectedResult);
 
         assertEquals(expectedResult.getStatus(), response.getStatus());
