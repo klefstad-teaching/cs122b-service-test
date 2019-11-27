@@ -1,4 +1,3 @@
-# IDM db script
 DELETE FROM session WHERE status > 0;
 DELETE FROM user WHERE status > 0;
 insert into user (email, status, plevel, salt, pword) values  ('apiGatewayTestLogin@uci.edu', 1, 5, 'da738806', '91bc292bc1fda96d6479ebaef223f06c287c281c33e95a82c8cf5a92cc920591b7aadacc2d8d145780f4de6d0a253e8e7fac2aff441b92dc55b3f4a4d6ced922');
