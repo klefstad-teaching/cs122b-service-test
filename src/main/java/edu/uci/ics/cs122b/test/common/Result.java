@@ -13,9 +13,8 @@ public enum Result
 
     /* HW1 Result Codes*/
     STRING_SUCCESSFULLY_REVERSED                (10,  "String successfully reversed"),
-    COULD_NOT_REVERSE_STRING                    (11,  "Could not reverse string"),
-    STRING_IS_EMPTY                             (12,  "String is empty"),
-    STRING_CONTAINS_INVALID_CHARACTERS          (13,  "String contains invalid characters"),
+    STRING_IS_EMPTY                             (11,  "String is empty"),
+    STRING_CONTAINS_INVALID_CHARACTERS          (12,  "String contains invalid characters"),
 
     CALCULATION_SUCCESSFUL                      (20,  "Calculation successful"),
     CALCULATION_UNSUCCESSFUL                    (21,  "Calculation unsuccessful"),
