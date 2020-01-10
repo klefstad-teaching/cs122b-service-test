@@ -6,7 +6,7 @@
 - First, deploy your microservice on your LOCAL machine using PORT 12345
 - Run the service using one of the following:
 ~~~
-[WINDOWS]        ./gradlew.bat test --tests TestClassName
+[WINDOWS]         gradlew      test --tests TestClassName
 [MACOS/UNIX]     ./gradlew     test --tests TestClassName
 
 HW1:
