@@ -17,8 +17,7 @@ public enum Result
     STRING_CONTAINS_INVALID_CHARACTERS          (12,  "String contains invalid characters"),
 
     CALCULATION_SUCCESSFUL                      (20,  "Calculation successful"),
-    CALCULATION_UNSUCCESSFUL                    (21,  "Calculation unsuccessful"),
-    DATA_CONTAINS_INVALID_INTEGERS              (22,  "Data contains invalid integers"),
+    DATA_CONTAINS_INVALID_INTEGERS              (21,  "Data contains invalid integers"),
 
     /*HW2 Result Codes*/
     PLEVEL_OUT_OF_RANGE                         (-14, "Privilege level out of valid range", Status.BAD_REQUEST),
