@@ -14,7 +14,7 @@ import testcases.socket.IdmSocket;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class IdmRegister
+public class IdmTestRegister
 {
     @Test
     public void registerSuccessfully()

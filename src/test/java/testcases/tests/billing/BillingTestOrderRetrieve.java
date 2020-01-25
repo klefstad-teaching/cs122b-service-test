@@ -89,7 +89,7 @@ public class BillingTestOrderRetrieve {
         assertEquals(expectedModel, responseRetrieve.getEntity());
     }
 
-    @Test
+/*    @Test
     public void valid_CartRetrieveThreeItem()
     {
         String[] movie_ids = {"tt3671086", "tt3675568", "tt0071853"};
@@ -113,8 +113,7 @@ public class BillingTestOrderRetrieve {
         assertEquals(movieTitleTable.get(movie_ids[2]), items[this.findId(items, movie_ids[2])].getMovie_title());
        // assertEquals(movieDiscountTable.get(movie_ids[1]), items[1].getDiscount());
         //assertEquals(moviePriceTable.get(movie_ids[0]), items[0].getUnit_price());
-
-    }
+    }*/
 
     @Test
     public void valid_CartRetrieveEmpty()

@@ -14,7 +14,7 @@ import testcases.socket.IdmSocket;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class IdmSession
+public class IdmTestSession
 {
     public static final int EXPECTED_SESSION_ID_LENGTH = 64;
     public static final String USER_SESSION     = "3c441bdac83d2e5027c6bf237121ddcebf4f6046a8db136d8026048c0b0cdabf2ac6301db8d09172bb100211f9b742f1245b921630e6fa9fa63d806f99177cbc";
