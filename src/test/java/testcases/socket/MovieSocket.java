@@ -17,6 +17,7 @@ import testcases.model.hw3.request.GetPersonRequestModel;
 import testcases.model.hw3.request.*;
 import testcases.model.hw3.response.*;
 import testcases.model.hw3.submodels.*;
+import testcases.tests.movie.UserAccounts;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
@@ -59,6 +60,13 @@ public class MovieSocket {
         ThumbnailRequestModel requestModel = new ThumbnailRequestModel(movie_ids);
 
         ServiceSocket serviceSocket = SOCKET_FACTORY.createSocket(THUMBNAIL_EP);
+
+        MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
+        headers.putSingle("email", UserAccounts.validEmail);
+        headers.putSingle("session_id", UserAccounts.session_id);
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
+
+        serviceSocket = serviceSocket.headers(headers);
 
         return serviceSocket.post(ThumbnailResponseModel.class, requestModel);
     }

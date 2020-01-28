@@ -8,11 +8,11 @@ import testcases.model.hw3.response.MovieSearchResponseModel;
 import testcases.model.hw3.response.PeopleSearchResponseModel;
 import testcases.model.hw3.submodels.Movie;
 import testcases.socket.MovieSocket;
+import testcases.tests.HeaderTest.HeaderCheck;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class MovieTestPeople {
 
@@ -24,11 +24,15 @@ public class MovieTestPeople {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", UserAccounts.invalidEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         MultivaluedHashMap<String, Object> query = new MultivaluedHashMap<>();
         query.putSingle("name", "nameDoesNotExist");
 
         ServiceResponse<PeopleSearchResponseModel> response = MovieSocket.getPeople(headers, query);
+
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(response.getHeaders())));
+
 
         Movie[] movieResults = response.getEntity().getMovies();
 

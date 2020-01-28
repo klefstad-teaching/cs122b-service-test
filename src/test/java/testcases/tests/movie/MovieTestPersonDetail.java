@@ -13,10 +13,11 @@ import testcases.model.hw3.submodels.MovieModel;
 import testcases.model.hw3.submodels.PeopleModel;
 import testcases.model.hw3.submodels.Person;
 import testcases.socket.MovieSocket;
+import testcases.tests.HeaderTest.HeaderCheck;
 
 import javax.ws.rs.core.MultivaluedHashMap;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+
+import static org.junit.Assert.*;
 
 public class MovieTestPersonDetail {
 
@@ -31,10 +32,14 @@ public class MovieTestPersonDetail {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email);
         headers.putSingle("session_id", session_id);
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
+
 
         MultivaluedHashMap<String, Object> query = new MultivaluedHashMap<>();
 
         ServiceResponse<GetPersonByIDResponseModel> actualResponse = MovieSocket.getPersonByID(headers, query, personID);
+
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(actualResponse.getHeaders())));
 
         PeopleModel person = actualResponse.getEntity().getPerson();
 

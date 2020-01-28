@@ -13,11 +13,11 @@ import testcases.model.hw3.response.*;
 
 
 import testcases.model.hw3.submodels.*;
+import testcases.tests.HeaderTest.HeaderCheck;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 
 public class MovieTestSearch {
@@ -30,6 +30,7 @@ public class MovieTestSearch {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", UserAccounts.validEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         MultivaluedHashMap<String, Object> query = new MultivaluedHashMap<>();
         query.putSingle("title", "Avengers: Endgame");
@@ -38,6 +39,8 @@ public class MovieTestSearch {
 
 
         ServiceResponse<MovieSearchResponseModel> response = MovieSocket.getSearch(headers, query);
+
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(response.getHeaders())));
 
         Movie[] movieResults = response.getEntity().getMovies();
 

@@ -13,12 +13,12 @@ import testcases.model.hw3.response.*;
 
 
 import testcases.model.hw3.submodels.*;
+import testcases.tests.HeaderTest.HeaderCheck;
 
 import javax.jws.soap.SOAPBinding;
 import javax.ws.rs.core.MultivaluedHashMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 //*********************************************
 //
@@ -37,11 +37,15 @@ public class MovieTestPeopleSearch {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", UserAccounts.validEmail);
         headers.putSingle("session_id", UserAccounts.session_id);
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         MultivaluedHashMap<String, Object> query = new MultivaluedHashMap<>();
         query.putSingle("name", "Robert Downey Jr.");
 
         ServiceResponse<PeopleInfoSearchResponseModel> response = MovieSocket.getBrowseForPeopleInfo(headers, query);
+
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(response.getHeaders())));
+
 
         Person[] people = response.getEntity().getPeople();
 

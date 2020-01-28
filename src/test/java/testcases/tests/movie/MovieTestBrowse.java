@@ -14,11 +14,11 @@ import testcases.model.hw3.response.*;
 
 
 import testcases.model.hw3.submodels.*;
+import testcases.tests.HeaderTest.HeaderCheck;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 //*********************************************
 //
@@ -28,6 +28,7 @@ import static org.junit.Assert.assertNull;
 public class MovieTestBrowse {
     @Test
     public void validPrivilege_BrowseKeywordDefaultQueryParams() {
+
         String email = UserAccounts.validEmail;
         String session_id = UserAccounts.session_id;
         String keywords = "sequel,alien invasion";
@@ -36,10 +37,15 @@ public class MovieTestBrowse {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email);
         headers.putSingle("session_id", session_id);
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         MultivaluedHashMap<String, Object> query = new MultivaluedHashMap<>();
 
         ServiceResponse<BrowseKeywordResponseModel> response = MovieSocket.getBrowseByKeyword(headers, query, keywords);
+
+        //Tests
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(response.getHeaders())));
+
         BrowseMovieModel[] browseMovies = response.getEntity().getMovies();
 
         assertEquals(expectedResult.getStatus(), response.getStatus());
@@ -59,11 +65,15 @@ public class MovieTestBrowse {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email);
         headers.putSingle("session_id", session_id);
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         MultivaluedHashMap<String, Object> query = new MultivaluedHashMap<>();
         query.putSingle("direction", "desc");
 
         ServiceResponse<BrowseKeywordResponseModel> response = MovieSocket.getBrowseByKeyword(headers, query, keywords);
+
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(response.getHeaders())));
+
         BrowseMovieModel[] browseMovies = response.getEntity().getMovies();
 
         assertEquals(expectedResult.getStatus(), response.getStatus());
@@ -86,6 +96,7 @@ public class MovieTestBrowse {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email);
         headers.putSingle("session_id", session_id);
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         MultivaluedHashMap<String, Object> query = new MultivaluedHashMap<>();
         query.putSingle("orderby", "year");
@@ -94,6 +105,9 @@ public class MovieTestBrowse {
         query.putSingle("offset", 25);
 
         ServiceResponse<BrowseKeywordResponseModel> response = MovieSocket.getBrowseByKeyword(headers, query, keywords);
+
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(response.getHeaders())));
+
         BrowseMovieModel[] movies = response.getEntity().getMovies();
 
         assertEquals(expectedResult.getStatus(), response.getStatus());
