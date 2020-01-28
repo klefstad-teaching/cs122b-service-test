@@ -7,8 +7,9 @@ import edu.uci.ics.cs122b.test.common.Result;
 import testcases.model.hw3.submodels.BrowseMovieModel;
 import testcases.model.hw3.submodels.MovieModel;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BrowseKeywordResponseModel extends ResponseModel {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+
     @JsonProperty("movies")
     private BrowseMovieModel[] movies;
 

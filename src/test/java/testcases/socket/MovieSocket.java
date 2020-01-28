@@ -117,6 +117,7 @@ public class MovieSocket {
 
         serviceSocket = serviceSocket.headers(headers);
         serviceSocket = serviceSocket.queries(query);
+
         return serviceSocket.get(GetMovieResponseModel.class);
     }
 
