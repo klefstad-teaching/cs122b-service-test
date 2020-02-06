@@ -284,6 +284,20 @@ public class ServiceSocket
      *
      * @return an instance of {@link Builder} to be used to query the MicroService
      */
+//    private Builder createBuilder()
+//    {
+//        WebTarget webTarget = CLIENT.target(uri).path(path);
+//
+//        if (queries != null)
+//            for (String key : queries.keySet())
+//                webTarget = webTarget.queryParam(key, queries.getFirst(key));
+//
+//        if (headers != null)
+//            return webTarget.request(requestType).headers(headers);
+//        else
+//            return webTarget.request(requestType);
+//    }
+
     private Builder createBuilder()
     {
         WebTarget webTarget = CLIENT.target(uri).path(path);
@@ -292,9 +306,12 @@ public class ServiceSocket
             for (String key : queries.keySet())
                 webTarget = webTarget.queryParam(key, queries.getFirst(key));
 
+        Builder builder =  webTarget.request(requestType);
+
         if (headers != null)
-            return webTarget.request(requestType).headers(headers);
-        else
-            return webTarget.request(requestType);
+            for (String key : headers.keySet())
+                builder.header(key, headers.getFirst(key));
+
+        return builder;
     }
 }
