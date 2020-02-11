@@ -2,10 +2,7 @@ package testcases.tests.billing;
 
 import edu.uci.ics.cs122b.test.common.Result;
 import edu.uci.ics.cs122b.test.util.ServiceResponse;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.experimental.theories.suppliers.TestedOn;
 import testcases.model.hw4.response.CartRetrieveResponseModel;
 import testcases.model.hw4.submodels.ItemModel;
@@ -24,7 +21,7 @@ public class BillingTestOrderRetrieve {
     private static Hashtable<String, Float> movieDiscountTable = new Hashtable<>();
     private static Hashtable<String, String> movieTitleTable = new Hashtable<>();
 
-    public static void clearCart(String email, String session_id)
+    public void clearCart(String email, String session_id)
     {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email );
@@ -89,10 +86,10 @@ public class BillingTestOrderRetrieve {
         assertEquals(expectedModel, responseRetrieve.getEntity());
     }
 
-/*    @Test
+    @Test
     public void valid_CartRetrieveThreeItem()
     {
-        String[] movie_ids = {"tt3671086", "tt3675568", "tt0071853"};
+        String[] movie_ids = {"tt0040366", "tt3675568", "tt0071853"};
         String email = UserAccounts.validEmail;
         Result expectedResult = Result.CART_RETRIEVE_SUCCESS;
 
@@ -111,9 +108,10 @@ public class BillingTestOrderRetrieve {
         assertEquals(expectedResult.getResultCode(), responseRetrieve.getEntity().getResultCode());
 
         assertEquals(movieTitleTable.get(movie_ids[2]), items[this.findId(items, movie_ids[2])].getMovie_title());
-       // assertEquals(movieDiscountTable.get(movie_ids[1]), items[1].getDiscount());
+        // assertEquals(movieDiscountTable.get(movie_ids[1]), items[1].getDiscount());
         //assertEquals(moviePriceTable.get(movie_ids[0]), items[0].getUnit_price());
-    }*/
+
+    }
 
     @Test
     public void valid_CartRetrieveEmpty()
@@ -130,8 +128,8 @@ public class BillingTestOrderRetrieve {
         assertNull(responseRetrieve.getEntity().getItems());
 
     }
-    @AfterClass
-    public static void clearCartAfterAll()
+    @After
+    public void clearCartAfterAll()
     {
         clearCart(UserAccounts.validEmail, UserAccounts.session_id);
         //clear cart
