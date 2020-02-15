@@ -1,16 +1,11 @@
 package testcases.tests.billing;
 
-import edu.uci.ics.cs122b.test.common.Json;
 import edu.uci.ics.cs122b.test.common.Result;
 import edu.uci.ics.cs122b.test.util.ServiceResponse;
-import org.junit.After;
 import org.junit.Test;
-import testcases.model.hw4.request.CartInsertRequestModel;
-import testcases.model.hw4.request.CartUpdateRequestModel;
 import testcases.model.hw4.response.CartDeleteResponseModel;
 import testcases.model.hw4.response.CartInsertResponseModel;
 import testcases.model.hw4.response.CartRetrieveResponseModel;
-import testcases.model.hw4.response.CartUpdateResponseModel;
 import testcases.model.hw4.submodels.ItemModel;
 import testcases.socket.BillingSocket;
 import testcases.tests.movie.UserAccounts;
@@ -18,7 +13,6 @@ import testcases.tests.movie.UserAccounts;
 import javax.ws.rs.core.MultivaluedHashMap;
 
 import static org.junit.Assert.*;
-import static testcases.tests.billing.BillingTestOrderRetrieve.clearCart;
 
 public class BillingTestCartDelete {
 
