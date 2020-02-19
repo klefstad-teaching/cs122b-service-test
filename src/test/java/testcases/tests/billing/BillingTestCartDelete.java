@@ -8,6 +8,7 @@ import testcases.model.hw4.response.CartInsertResponseModel;
 import testcases.model.hw4.response.CartRetrieveResponseModel;
 import testcases.model.hw4.submodels.ItemModel;
 import testcases.socket.BillingSocket;
+import testcases.tests.HeaderTest.HeaderCheck;
 import testcases.tests.movie.UserAccounts;
 
 import javax.ws.rs.core.MultivaluedHashMap;
@@ -22,6 +23,7 @@ public class BillingTestCartDelete {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", UserAccounts.validEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         String email = UserAccounts.validEmail;
         String movie_id = "tt4154796";
@@ -44,6 +46,9 @@ public class BillingTestCartDelete {
         Result expectedResultDelete = Result.ITEM_DELETE_SUCCESS;
         ServiceResponse<CartDeleteResponseModel> responseDelete = BillingSocket.postCartDelete(headers, email, movie_id);
         assertEquals(expectedResultDelete.getStatus(), responseDelete.getStatus());
+
+        //check headers
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(responseDelete.getHeaders())));
 
         //calling retrieve
         Result expectedResultRetrieve = Result.ITEM_DNE;

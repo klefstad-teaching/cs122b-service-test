@@ -7,14 +7,14 @@ import org.junit.experimental.theories.suppliers.TestedOn;
 import testcases.model.hw4.response.CartRetrieveResponseModel;
 import testcases.model.hw4.submodels.ItemModel;
 import testcases.socket.BillingSocket;
+import testcases.tests.HeaderTest.HeaderCheck;
 import testcases.tests.movie.UserAccounts;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 
 import java.util.Hashtable;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class BillingTestOrderRetrieve {
     private static Hashtable<String, Float> moviePriceTable = new Hashtable<>();
@@ -76,9 +76,15 @@ public class BillingTestOrderRetrieve {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email );
         headers.putSingle("session_id", UserAccounts.session_id );
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
+
 
         BillingSocket.postCartInsert(headers, email, "tt0040366", quantity);
         ServiceResponse<CartRetrieveResponseModel> responseRetrieve = BillingSocket.postCartRetrieve(headers, email);
+
+        //check headers
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(responseRetrieve.getHeaders())));
+
         assertEquals(expectedResult.getStatus(), responseRetrieve.getStatus());
         assertEquals(expectedResult.getResultCode(), responseRetrieve.getEntity().getResultCode());
         //test length

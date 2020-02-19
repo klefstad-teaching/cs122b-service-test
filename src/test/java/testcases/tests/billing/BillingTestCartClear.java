@@ -9,11 +9,13 @@ import testcases.model.hw4.response.CartInsertResponseModel;
 import testcases.model.hw4.response.CartRetrieveResponseModel;
 import testcases.model.hw4.submodels.ItemModel;
 import testcases.socket.BillingSocket;
+import testcases.tests.HeaderTest.HeaderCheck;
 import testcases.tests.movie.UserAccounts;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BillingTestCartClear {
 
@@ -23,6 +25,7 @@ public class BillingTestCartClear {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", UserAccounts.validEmail );
         headers.putSingle("session_id", UserAccounts.session_id );
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
 
         String email = UserAccounts.validEmail;
         String movie_id = "tt4154796";
@@ -45,6 +48,9 @@ public class BillingTestCartClear {
         Result expectedResultClear = Result.CART_CLEAR_SUCCESS;
         ServiceResponse<CartClearResponseModel> responseClear = BillingSocket.postCartClear(headers, email);
         assertEquals(expectedResultClear.getStatus(), responseClear.getStatus());
+
+        //check headers
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(responseClear.getHeaders())));
 
         //calling retrieve
         Result expectedResultRetrieve = Result.ITEM_DNE;

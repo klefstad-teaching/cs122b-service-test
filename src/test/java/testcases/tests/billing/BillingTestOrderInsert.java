@@ -7,12 +7,12 @@ import org.junit.Before;
 import org.junit.Test;
 import testcases.model.hw4.response.CartInsertResponseModel;
 import testcases.socket.BillingSocket;
+import testcases.tests.HeaderTest.HeaderCheck;
 import testcases.tests.movie.UserAccounts;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class BillingTestOrderInsert {
     /*
@@ -44,7 +44,12 @@ public class BillingTestOrderInsert {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email );
         headers.putSingle("session_id", UserAccounts.session_id );
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
+
         ServiceResponse<CartInsertResponseModel> response = BillingSocket.postCartInsert(headers, email, "tt0038057", maxQuantity);
+
+        //check headers
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(response.getHeaders())));
 
         assertEquals(expectedResult.getStatus(), response.getStatus());
         assertEquals(expectedModel, response.getEntity());

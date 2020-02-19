@@ -12,6 +12,7 @@ import testcases.model.hw4.response.CartRetrieveResponseModel;
 import testcases.model.hw4.response.CartUpdateResponseModel;
 import testcases.model.hw4.submodels.ItemModel;
 import testcases.socket.BillingSocket;
+import testcases.tests.HeaderTest.HeaderCheck;
 import testcases.tests.movie.UserAccounts;
 
 import javax.ws.rs.core.MultivaluedHashMap;
@@ -74,12 +75,17 @@ public class BillingTestCartUpdate {
         MultivaluedHashMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.putSingle("email", email );
         headers.putSingle("session_id", UserAccounts.session_id );
+        headers.putSingle("transaction_id", UserAccounts.transaction_id);
+
 
         int insertQuantity = 4;
         ServiceResponse<CartInsertResponseModel> insertResponse = BillingSocket.postCartInsert(headers, UserAccounts.validEmail, "tt4154796", insertQuantity);
 
         int updateQuantity = -1;
         ServiceResponse<CartUpdateResponseModel> updateResponse = BillingSocket.postCartUpdate(headers, UserAccounts.validEmail, "tt4154796", updateQuantity);
+
+        //check headers
+        assertTrue(HeaderCheck.checkHeader(headers, new MultivaluedHashMap<String, Object>(updateResponse.getHeaders())));
 
         assertEquals(expectedResult.getStatus(), updateResponse.getStatus());
         assertEquals(expectedModel, updateResponse.getEntity());
