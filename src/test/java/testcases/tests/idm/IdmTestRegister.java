@@ -61,7 +61,7 @@ public class IdmTestRegister
     @Test
     public void registerPasswordNotMeetLengthRequirementTooLong()
     {
-        Result expectedResult = Result.PASSWORD_NOT_MEET_LENGTH_REQUIREMENTS;
+        Result expectedResult = Result.PASSWORD_INVALID_LENGTH;
         RegisterResponseModel expectedModel = new RegisterResponseModel(expectedResult);
         String password = "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1";
         char[] passwordArray = password.toCharArray();
